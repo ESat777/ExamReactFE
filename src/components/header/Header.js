@@ -34,17 +34,17 @@ const Header = () => {
                         )}
                         {user.loggedIn && (
                             <>
-                                <li><Link className='text-info h4' to="/orders">Registracijos</Link></li>
+                                <li><Link className='text-info h4' to="/applications">Registracijos</Link></li>
                                 <li><Link className='text-info h4' to="/logout">Atsijungti</Link></li>
                             </>
                         )}
                         {user.loggedIn && user.role === '0' && (
                             <>
                                 <li>
-                                    <Link className='text-info h4' to="/admin/orders">Administratorius</Link>
+                                    <Link className='text-info h4' to="/admin/applications">Administratorius</Link>
                                     <ul class="dropdown-menu">
-                                        <li><Link className='h5 text-info' to="/admin/orders">Prašymai</Link></li>
-                                        <li><Link className='h5 text-info' to="/admin/hotels">Mokyklos</Link></li>
+                                        <li><Link className='h5 text-info' to="/admin/applications">Prašymai</Link></li>
+                                        <li><Link className='h5 text-info' to="/admin/schools">Mokyklos</Link></li>
                                     </ul>
                                 </li>
                             </>

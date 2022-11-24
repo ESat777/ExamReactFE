@@ -1,9 +1,17 @@
 import Header from '../components/header/Header'
+// import HotelList from '../components/hotelList/HotelList'
+// import Message from '../components/message/Message'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Footer from '../components/footer/Footer'
 
 const Home = () => {
+    const [loading, setLoading] = useState(true)
+    const [schools, setSchools] = useState([])
+    const [message, setMessage] = useState({
+        text: '',
+        status: ''
+    })
 
     useEffect(() => {
         //const token = localStorage.getItem('token')
@@ -12,7 +20,7 @@ const Home = () => {
         .then(resp => {
             setLoading(false)
             if(resp.data.success) {
-                setHotels(resp.data.message)
+                setSchools(resp.data.message)
             }
         })
         .catch(err => {
@@ -27,6 +35,13 @@ const Home = () => {
     return (
         <>
             <Header />
+            {/* {loading && ( <div className="loading">Kraunasi...</div> )}
+            <div className="container">
+                <Message value={message} />
+                {hotels ? <HotelList hotels={hotels} /> : (
+                    <h2>Nėra sukurtų jokių viešbučių</h2>
+                )}
+            </div> */}
             <Footer/>
         </>
     )

@@ -13,7 +13,7 @@ import AppliAdmin from './pages/admin/AppliAd';
 import Schools from './pages/admin/schools/Schools';
 import EditShool from './pages/admin/schools/EditSchool';
 import NewSchool from './pages/admin/schools/NewSchool';
-import Appli from './pages/Appli';
+import Appli from './pages/Applis';
 
 
 
@@ -55,7 +55,7 @@ const App = () => {
                 )}
                 {user.loggedIn && (
                     <>
-                        <Route path="/applications" element={<Appli />} /> 
+                        <Route path="/applications" element={<Appli/>} /> 
                     </>
                 )}
 

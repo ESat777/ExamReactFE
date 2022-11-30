@@ -32,7 +32,6 @@ const Schools = () => {
                 setMessage({text: err.response.data.message, status: 'danger'})
             else 
                 setMessage({text: 'Serveris miręs', status: 'danger'})
-            //navigate('/login')
         })
     }, [reload])
 
@@ -55,7 +54,6 @@ const Schools = () => {
                 setMessage({text: err.response.data.message, status: 'danger'})
             else 
                 setMessage({text: 'Serveris miręs', status: 'danger'})
-            //navigate('/login')
         })
     }
 
@@ -76,7 +74,6 @@ const Schools = () => {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nuotrauka</th>
                                 <th>Pavadinimas</th>
                                 <th>Kodas</th>
                                 <th>Miestas</th>
@@ -88,7 +85,6 @@ const Schools = () => {
                         {schools.map(school => (
                             <tr key={school.id}>
                                 <td className="text-center">{school.id}</td>
-                                <td className="schoollImage"><img src={school.image} alt={school.name} /></td>
                                 <td>{school.name}</td>
                                 <td>{school.code}</td>
                                 <td>{school.city}</td>

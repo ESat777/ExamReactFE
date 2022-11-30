@@ -16,35 +16,32 @@ const NewHotel = () => {
         text: '',
         status: ''
     })
-    const [countries, setCountries] = useState([])
+    const [shools, setSchools] = useState([])
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate();
     const token = localStorage.getItem('token')
 
     const handleFormChange = (e) => {
-        if(e.target.name === 'image')
-            setForm({ ...form, [e.target.name]: e.target.files[0] })
-        else
+        
             setForm({ ...form, [e.target.name]: e.target.value })
     }
 
-    // useEffect(() => {
-    //     setLoading(true)
+    useEffect(() => {
+        setLoading(true)
 
-    //     axios.get('/api/countries')
-    //     .then(resp => {
-    //         setLoading(false)
-    //         setCountries(resp.data.message)
-    //     })
-    //     .catch(err => {
-    //         setLoading(false)
-    //         if(err.response.data)
-    //             setMessage({text: err.response.data.message, status: 'danger'})
-    //         else 
-    //             setMessage({text: 'Serveris miręs', status: 'danger'})
-    //         //navigate('/login')
-    //     })
-    // }, [])
+        axios.get('/api/schools')
+        .then(resp => {
+            setLoading(false)
+            setSchools(resp.data.message)
+        })
+        .catch(err => {
+            setLoading(false)
+            if(err.response.data)
+                setMessage({text: err.response.data.message, status: 'danger'})
+            else 
+                setMessage({text: 'Serveris miręs', status: 'danger'})
+        })
+    }, [])
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -97,10 +94,6 @@ const NewHotel = () => {
                     <div className="form-group">
                         <label>Kodas:</label>
                         <input type="number" name="code" className="form-control" onChange={handleFormChange} value={form.price} />
-                    </div>
-                    <div className="form-group">
-                        <label>Nuotrauka:</label>
-                        <input type="file" name="image" className="form-control-file" onChange={handleFormChange} />
                     </div>
                     <div className="form-group">
                         <label>Miestas:</label>

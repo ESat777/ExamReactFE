@@ -92,10 +92,10 @@ const Appli = () => {
                     <table className="table bg-light table-bordered">
                         <thead>
                             <tr>
-                                <th>Mokykla</th>
+                                <th>Mokymo įstaiga</th>
                                 <th>Kodas</th>
-                                <th>Trukme</th>
-                                <th>Šalis</th>
+                                <th>Adresas</th>
+                                <th>Miestas</th>
                                 <th>Statusas</th>
                                 <th>Veiksmai</th>
                             </tr>
@@ -105,8 +105,8 @@ const Appli = () => {
                             <tr key={appli.id}>
                                 <td>{appli.school_name}</td>
                                 <td>{appli.code}</td>
-                                <td>{appli.user_}</td>
-                                <td>{appli.country_name}</td>
+                                <td>{appli.address}</td>
+                                <td>{appli.city}</td>
                                 <td>{appli.approved === 0 ? 'Nepatvirtintas' : 'Patvirtintas' }</td>
                                 <td>
                                     <button className="btn btn-danger me-2" onClick={() => handleDelete(appli.id)}>Trinti</button>

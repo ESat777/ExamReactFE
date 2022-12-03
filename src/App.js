@@ -14,6 +14,7 @@ import Schools from './pages/admin/schools/Schools';
 import EditShool from './pages/admin/schools/EditSchool';
 import NewSchool from './pages/admin/schools/NewSchool';
 import Appli from './pages/Applis';
+import StudentRegister from './pages/logged/Register';
 
 
 
@@ -56,6 +57,7 @@ const App = () => {
                 {user.loggedIn && (
                     <>
                         <Route path="/applications" element={<Appli/>} /> 
+                        <Route path="/student/register" element={<StudentRegister/>} /> 
                     </>
                 )}
 

@@ -14,7 +14,6 @@ const Home = () => {
     })
 
     useEffect(() => {
-        //const token = localStorage.getItem('token')
         setLoading(true)
         axios.get('/api/schools')
         .then(resp => {

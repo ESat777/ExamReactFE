@@ -32,12 +32,12 @@ const Header = () => {
                                 <li><Link className='text-info h4' to="/register">Registruotis</Link></li>
                             </>
                         )}
-                        {user.loggedIn && (
+                        {user.loggedIn && user.role === '1' && (
                             <>
                                 <li><Link className='text-info h4' to="/applications">Registracijos</Link></li>
-                                <li><Link className='text-info h4' to="/logout">Atsijungti</Link></li>
                             </>
                         )}
+
                         {user.loggedIn && user.role === '0' && (
                             <>
                                 <li>
@@ -49,6 +49,12 @@ const Header = () => {
                                 </li>
                             </>
                         )}
+                        {user.loggedIn && (
+                            <>
+                                <li><Link className='text-info h4' to="/logout">Atsijungti</Link></li>
+                            </>
+                        )}
+
                     </ul>
                 </nav>
             </div>

@@ -13,8 +13,10 @@ const Logout = (props) => {
                 headers: { Authorization: `Bearer ${token}` }
             })
             .then(() => {
+                localStorage.removeItem('id')
                 localStorage.removeItem('token')
                 localStorage.removeItem('user_role')
+                
                 logoutUser()
                 window.location.href = '/'
                 navigate('/')

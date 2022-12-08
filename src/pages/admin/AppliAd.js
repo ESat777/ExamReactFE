@@ -43,8 +43,10 @@ const Appli = () => {
         })
         .then(resp => {
             setLoading(false)
-            setReload(true)
+            
             setMessage({text: resp.data.message, status: 'success'})
+            setReload(true)
+            console.log(applis)
         })
         .catch(err => {
             setLoading(false)

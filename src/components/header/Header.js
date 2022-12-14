@@ -9,12 +9,14 @@ const Header = () => {
     useEffect(() => {
         const token = localStorage.getItem('token')
         const role = localStorage.getItem('user_role')
+        const name = localStorage.getItem('user_name')
 
         if(token && role) {
             setUser({
                 loggedIn: true,
                 token,
-                role
+                role,
+                name
             })
         }
     }, [])
@@ -52,6 +54,7 @@ const Header = () => {
                         {user.loggedIn && (
                             <>
                                 <li><Link className='text-info h4' to="/logout">Atsijungti</Link></li>
+                                <li className='text-success h4 mt-3'><span className="nav-link mx-4">🙋‍♂️{user.name}</span></li>
                             </>
                         )}
 

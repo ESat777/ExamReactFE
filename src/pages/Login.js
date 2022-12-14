@@ -40,10 +40,13 @@ const Login = ({setUser}) => {
             if(resp.status === 200) {
                 localStorage.setItem('token', resp.data.message.token)
                 localStorage.setItem('user_role', resp.data.message.role)
+                localStorage.setItem('user_name', resp.data.message.user_name)
+                console.log(resp.data.message)
                 setUser({
                     loggedIn: true,
                     token: resp.data.message.token,
-                    role: resp.data.message.role
+                    role: resp.data.message.role,
+                    name: resp.data.message.user_name
                 })
                 navigate('/')
             }

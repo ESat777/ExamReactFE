@@ -46,8 +46,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               {!user.loggedIn && <Route path="/login" element={<Login setUser={setUser}/>} /> }
               {!user.loggedIn && <Route path="/register" element={<Register />} /> } 
-              {console.log(<Route path />)}
-              {user.role === '0' && (
+              {user.loggedIn && user.role == '0' && (
                     <>
                         <Route path="/admin/applications" element={<AppliAdmin />} /> 
                         <Route path="/admin/schools" element={<Schools />} /> 

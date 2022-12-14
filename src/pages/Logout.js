@@ -16,6 +16,7 @@ const Logout = (props) => {
                 localStorage.removeItem('id')
                 localStorage.removeItem('token')
                 localStorage.removeItem('user_role')
+                localStorage.removeItem('user_name')
                 
                 logoutUser()
                 window.location.href = '/'

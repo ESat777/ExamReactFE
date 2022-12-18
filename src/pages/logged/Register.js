@@ -58,7 +58,7 @@ const Register = () => {
         .then(resp => {
             if (resp.status === 200) {
                 setLoading(false)
-                setMessage({text: 'Mokykla sėkmingai išssaugota', status: 'success'})
+                setMessage({text: 'Mokinio duomenys sėkmingai išsaugoti.', status: 'success'})
                 setTimeout(() => navigate('/'), 2000)
             }
         })

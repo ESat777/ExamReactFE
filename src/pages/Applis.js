@@ -37,7 +37,7 @@ const Applis = () => {
             else 
                 setMessage({text: 'Serveris miręs', status: 'danger'})
         })
-    }, [])
+    }, [reload])
 
     const handleDelete = (id) => {
         setLoading(true)
@@ -47,6 +47,8 @@ const Applis = () => {
         .then(resp => {
             setLoading(false)
             setMessage({text: resp.data.message, status: 'success'})
+            setTimeout(() => setMessage(''), 2000)
+
             setReload(true)
             setApplis([])
         })
@@ -75,9 +77,12 @@ const Applis = () => {
                     <table className="table bg-light table-bordered">
                         <thead>
                             <tr>
+                                <th>Data</th>
+                                <th>Vardas</th>
+                                <th>Pavardė</th>
+                                <th>Asmens kodas</th>
                                 <th>Mokymo įstaiga</th>
-                                <th>Kodas</th>
-                                <th>Adresas</th>
+                                <th>Klasė</th>
                                 <th>Miestas</th>
                                 <th>Statusas</th>
                                 <th>Veiksmai</th>
@@ -86,9 +91,12 @@ const Applis = () => {
                         <tbody>
                         {applis.map(appli => (
                             <tr key={appli.id}>
+                                <td>{appli.created_at}</td>
+                                <td>{appli.name}</td>
+                                <td>{appli.surname}</td>
+                                <td>{appli.student_code}</td>
                                 <td>{appli.school_name}</td>
-                                <td>{appli.code}</td>
-                                <td>{appli.user}</td>
+                                <td>{appli.class}</td>
                                 <td>{appli.city}</td>
                                 <td>{appli.approved === 0 ? 'Nepatvirtintas' : 'Patvirtintas' }</td>
                                 <td>

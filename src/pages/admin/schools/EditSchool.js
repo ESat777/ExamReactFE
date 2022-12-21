@@ -63,7 +63,7 @@ const EditSchool = () => {
         .then(resp => {
             if (resp.status === 200) {
                 setLoading(false)
-                setMessage({text: 'Mokykla sėkmingai išssaugota', status: 'success'})
+                setMessage({text: 'Pakeitimai išsaugoti', status: 'success'})
                 setTimeout(() => navigate('/admin/schools'), 2000)
             }
         })

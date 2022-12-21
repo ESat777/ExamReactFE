@@ -67,6 +67,7 @@ const Appli = () => {
             setReload(true)
             setLoading(false)
             setMessage({text: resp.data.message, status: 'success'})
+            setTimeout(() => setMessage(''), 2000)
         })
         .catch(err => {
             setLoading(false)

@@ -77,7 +77,6 @@ const Applis = () => {
                     <table className="table bg-light table-bordered">
                         <thead>
                             <tr>
-                                <th>Data</th>
                                 <th>Vardas</th>
                                 <th>Pavardė</th>
                                 <th>Asmens kodas</th>
@@ -91,7 +90,6 @@ const Applis = () => {
                         <tbody>
                         {applis.map(appli => (
                             <tr key={appli.id}>
-                                <td>{appli.created_at}</td>
                                 <td>{appli.name}</td>
                                 <td>{appli.surname}</td>
                                 <td>{appli.student_code}</td>

@@ -8,6 +8,7 @@ import Footer from '../../components/footer/Footer'
 
 const Register = () => {
     const id = localStorage.getItem('id')
+
     
     const [registerForm, setRegisterForm] = useState({
         name: '',
@@ -25,27 +26,29 @@ const Register = () => {
 
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
-    
-    
-    
-
-
-    // useEffect(() => {
-    //     setLoading(false)
-    //     const token = localStorage.getItem('token')
-    //     if(token) {
-    //         navigate('/')
-    //     } 
-    // }, [navigate])
 
     const handleFormChange = (e) => {
         setRegisterForm({...registerForm, [e.target.name]: e.target.value})
     }
+    const date = registerForm.student_id
+    console.log(date)
+    let year = date.substring(1, 3)
+    let month = date.substring(3, 5)
+    let day = date.substring(5, 7)
+    if(date.substring(0, 1) === '3'){
+        registerForm.student_bd = '19' + year + '-' + month +'-' + day
+    }else if(date.substring(0, 1) === '4'){
+        registerForm.student_bd = '19' + year + '-' + month +'-' + day}
+    else if(date.substring(0, 1) === '5'){
+        registerForm.student_bd = '20' + year + '-' + month +'-' + day}
+        else if(date.substring(0, 1) === '6'){
+            registerForm.student_bd = '20' + year + '-' + month +'-' + day}
+            else{registerForm.student_bd = '0000'}
+    console.log(date.substring(0, 0))
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
         setLoading(true)
-        console.log(e.student_bd)
         
         axios.post('/api/student/register', registerForm, {
         headers: { 
@@ -94,7 +97,7 @@ const Register = () => {
                             <label>Asmens kodas</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="date" className="form-control" name="student_bd" onChange={handleFormChange} placeholder="Gimimo data" value={registerForm.password} />
+                            <input type="text" className="form-control" name="student_bd" onChange={handleFormChange} placeholder="Gimimo data" value={registerForm.student_bd} />
                             <label>Gimimo data</label>
                         </div>
                         <div className="form-floating mb-3">

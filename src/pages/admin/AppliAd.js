@@ -95,6 +95,8 @@ const Appli = () => {
                     <table className="table bg-light table-bordered">
                         <thead>
                             <tr>
+                                <th>Data</th>
+                                <th>Laikas</th>
                                 <th>Mokymo įstaiga</th>
                                 <th>Kodas</th>
                                 <th>Adresas</th>
@@ -106,6 +108,8 @@ const Appli = () => {
                         <tbody>
                         {applis.map(appli => (
                             <tr key={appli.id}>
+                               <td>{appli.created_at.substring(0, 10)}</td>
+                                <td>{appli.created_at.substring(11, 16)}</td>
                                 <td>{appli.school_name}</td>
                                 <td>{appli.code}</td>
                                 <td>{appli.address}</td>

@@ -31,7 +31,6 @@ const Register = () => {
         setRegisterForm({...registerForm, [e.target.name]: e.target.value})
     }
     const date = registerForm.student_id
-    console.log(date)
     let year = date.substring(1, 3)
     let month = date.substring(3, 5)
     let day = date.substring(5, 7)

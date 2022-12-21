@@ -6,6 +6,7 @@ import axios from 'axios'
 
 const Applis = () => {
     const [applis, setApplis] = useState([])
+    
     const [message, setMessage] = useState({
         text: '',
         status: ''
@@ -28,6 +29,7 @@ const Applis = () => {
             setLoading(false)
             setReload(false)
             setApplis(resp.data.message)
+            console.log(resp.data.message)
             
         })
         .catch(err => {
@@ -38,6 +40,9 @@ const Applis = () => {
                 setMessage({text: 'Serveris miręs', status: 'danger'})
         })
     }, [reload])
+
+//    const startDate = applis.created_at
+   
 
     const handleDelete = (id) => {
         setLoading(true)
@@ -77,6 +82,7 @@ const Applis = () => {
                     <table className="table bg-light table-bordered">
                         <thead>
                             <tr>
+                                <th>Data</th>
                                 <th>Vardas</th>
                                 <th>Pavardė</th>
                                 <th>Asmens kodas</th>
@@ -89,7 +95,9 @@ const Applis = () => {
                         </thead>
                         <tbody>
                         {applis.map(appli => (
+                            // console.log(appli.created_at),
                             <tr key={appli.id}>
+                                <td>{appli.created_at.substring(0, 10)}</td>
                                 <td>{appli.name}</td>
                                 <td>{appli.surname}</td>
                                 <td>{appli.student_code}</td>

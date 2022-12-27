@@ -8,7 +8,6 @@ import Footer from '../../components/footer/Footer'
 
 const Register = () => {
     const id = localStorage.getItem('id')
-
     
     const [registerForm, setRegisterForm] = useState({
         name: '',
@@ -22,7 +21,7 @@ const Register = () => {
         text: '',
         status: ''
     })
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
@@ -76,27 +75,27 @@ const Register = () => {
  
     return (
         <>
-            {/* {loading && ( <div className="loading">Kraunasi...</div> )} */}
             <Header />
+            {loading && ( <div className="loading">Kraunasi...</div> )}
             <main className="text-center registerForm">
                 <div className="form-signin w-100 m-auto">
                     <h1 className="h2 mb-3 fw-normal text-light">Mokinio registracija</h1>
                     <Message value={message} />
                     <form onSubmit={handleFormSubmit}>
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" name="name" onChange={handleFormChange} placeholder="Mokinio vardas" value={registerForm.name} />
+                            <input type="text" className="form-control" name="name" onChange={handleFormChange} placeholder="Mokinio vardas" value={registerForm.name} required/>
                             <label >Vardas</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" name="surname" onChange={handleFormChange} placeholder="Mokinio pavardė" value={registerForm.surname} />
+                            <input type="text" className="form-control" name="surname" onChange={handleFormChange} placeholder="Mokinio pavardė" value={registerForm.surname} required />
                             <label >Pavardė</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" name="student_id" onChange={handleFormChange} placeholder="Asmens kodas" value={registerForm.email} />
+                            <input type="text" className="form-control" maxlength="11" minlength="11" name="student_id" onChange={handleFormChange} placeholder="Asmens kodas" value={registerForm.student_id} required />
                             <label>Asmens kodas</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" name="student_bd" onChange={handleFormChange} placeholder="Gimimo data" value={registerForm.student_bd} />
+                            <input type="text" className="form-control" name="student_bd" onChange={handleFormChange} placeholder="Gimimo data" value={registerForm.student_bd}  disabled/>
                             <label>Gimimo data</label>
                         </div>
                         <div className="form-floating mb-3">

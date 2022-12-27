@@ -25,6 +25,7 @@ const Appli = () => {
             setLoading(false)
             setReload(false)
             setApplis(resp.data.message)
+
         })
         .catch(err => {
             setLoading(false)
@@ -32,53 +33,13 @@ const Appli = () => {
                 setMessage({text: err.response.data.message, status: 'danger'})
             else 
                 setMessage({text: 'Serveris miręs', status: 'danger'})
-            //navigate('/login')
         })
     }, [reload])
 
-    const handleDelete = (id) => {
-        setLoading(true)
-        axios.delete('/api/applications/' + id, {
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        .then(resp => {
-            setLoading(false)
-            
-            setMessage({text: resp.data.message, status: 'success'})
-            setReload(true)
-            console.log(applis)
-        })
-        .catch(err => {
-            setLoading(false)
-            if(err.response.data)
-                setMessage({text: err.response.data.message, status: 'danger'})
-            else 
-                setMessage({text: 'Serveris miręs', status: 'danger'})
-            //navigate('/login')
-        })
+    const handleDetails = (id) => {
+            setLoading(true)
+            navigate('/admin/applis/register/' + id )
     }
-
-    const handleStatus = (id) => {
-        setLoading(true)
-        axios.get('/api/applications/' + id, {
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        .then(resp => {
-            setReload(true)
-            setLoading(false)
-            setMessage({text: resp.data.message, status: 'success'})
-            setTimeout(() => setMessage(''), 2000)
-        })
-        .catch(err => {
-            setLoading(false)
-            if(err.response.data)
-                setMessage({text: err.response.data.message, status: 'danger'})
-            else 
-                setMessage({text: 'Serveris miręs', status: 'danger'})
-            //navigate('/login')
-        })
-    }
-
 
     return (
         <> 
@@ -87,7 +48,7 @@ const Appli = () => {
             <div className="pt-5 container">
                 <div className="row mb-5">
                     <div className="col-md-12">
-                        <h2>Gauti prašymai</h2> 
+                        <h2 className='text-white'>Gauti prašymai</h2> 
                     </div>
                 </div>  
                 <Message value={message} />
@@ -98,7 +59,8 @@ const Appli = () => {
                                 <th>Data</th>
                                 <th>Laikas</th>
                                 <th>Mokymo įstaiga</th>
-                                <th>Kodas</th>
+                                <th>Mokinio pavarė</th>
+                                <th>Gimimo data</th>
                                 <th>Adresas</th>
                                 <th>Miestas</th>
                                 <th>Statusas</th>
@@ -106,20 +68,18 @@ const Appli = () => {
                             </tr>
                         </thead>
                         <tbody>
-                        {applis.map(appli => (
-                            <tr key={appli.id}>
+                        {applis.map((appli, index )=> (
+                            <tr key={index}>
                                <td>{appli.created_at.substring(0, 10)}</td>
                                 <td>{appli.created_at.substring(11, 16)}</td>
                                 <td>{appli.school_name}</td>
-                                <td>{appli.code}</td>
+                                <td>{appli.surname}</td>
+                                <td>{appli.student_bd}</td>
                                 <td>{appli.address}</td>
                                 <td>{appli.city}</td>
                                 <td>{appli.approved === 0 ? 'Nepatvirtintas' : 'Patvirtintas' }</td>
                                 <td>
-                                    <button className="btn btn-danger me-2" onClick={() => handleDelete(appli.id)}>Trinti</button>
-                                    <button className="btn btn-success" onClick={() => handleStatus(appli.id)}>
-                                        {appli.approved === 0 ? 'Patvirtinti' : 'Atmesti' }
-                                    </button>
+                                    <button className="btn btn-warning me-2 " onClick={() => handleDetails(appli.id)}>Detaliau</button>
                                 </td>
                             </tr>
                         ))}

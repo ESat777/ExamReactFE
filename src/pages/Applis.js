@@ -41,8 +41,6 @@ const Applis = () => {
         })
     }, [reload])
 
-//    const startDate = applis.created_at
-   
 
     const handleDelete = (id) => {
         setLoading(true)
